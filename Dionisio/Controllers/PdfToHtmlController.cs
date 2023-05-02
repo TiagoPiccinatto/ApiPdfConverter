@@ -44,18 +44,18 @@ namespace Dionisio.Controllers
         [HttpPost("add")]
         public async Task<ActionResult> AddPdf([FromForm] PdfModel Pdf)
         {           
-            string FilePathPdf = Path.Combine("Storage", Pdf.PdfFile.FileName);
-            string FilePathHtml = Path.Combine("Storage/ArquivosHtml", Pdf.PdfFile.FileName + ".html");
+            string FilePathPdf = Path.Combine("Storage", Guid.NewGuid().ToString() + Pdf.PdfFile.FileName);
+            string FilePathHtml = Path.Combine("Storage/ArquivosHtml", Guid.NewGuid().ToString() + Pdf.PdfFile.FileName.Replace(".pdf", ".html"));
 
             using Stream fileStreamPdf = new FileStream(FilePathPdf, FileMode.Create);
             Pdf.PdfFile.CopyTo(fileStreamPdf);
 
-            var htmlFile = PdfToHtml(Pdf.PdfFile);
+            var htmlFile = new PdfConvertService().PdfToHtml(Pdf.PdfFile);
 
-            using StreamWriter HtmlWriter = new StreamWriter(FilePathHtml);
+            using StreamWriter HtmlWriter = new(FilePathHtml);
             HtmlWriter.Write(htmlFile);
 
-            PdfEntity pdfEntity = new PdfEntity
+            PdfEntity pdfEntity = new()
             {
                 Autor = Pdf.Autor,
                 Data = Pdf.Data,
@@ -79,7 +79,7 @@ namespace Dionisio.Controllers
         }
 
         [HttpPut("update")]
-        public async Task<ActionResult> UpdateVeiculo(PdfEntity PdfAtualizado)
+        public async Task<ActionResult> UpdatePdf(PdfEntity PdfAtualizado)
         {
             var PdfCriado = await _PdfService.Update(PdfAtualizado);
 
