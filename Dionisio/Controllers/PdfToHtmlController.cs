@@ -79,7 +79,7 @@ namespace Dionisio.Controllers
         }
 
         [HttpPut("update")]
-        public async Task<ActionResult> UpdateVeiculo(PdfEntity PdfAtualizado)
+        public async Task<ActionResult> UpdatePdf(PdfEntity PdfAtualizado)
         {
             var PdfCriado = await _PdfService.Update(PdfAtualizado);
 
