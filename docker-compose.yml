@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  dionisio:
+    image: ${DOCKER_REGISTRY-}dionisio
+    build:
+      context: .
+      dockerfile: Dionisio/Dockerfile

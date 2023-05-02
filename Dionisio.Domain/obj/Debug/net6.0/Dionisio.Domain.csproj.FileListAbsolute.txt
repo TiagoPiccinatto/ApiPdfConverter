@@ -1,0 +1,14 @@
+C:\Users\tiago\Desktop\Projeto Pdf\Dionisio\Dionisio.Domain\bin\Debug\net6.0\Dionisio.Domain.deps.json
+C:\Users\tiago\Desktop\Projeto Pdf\Dionisio\Dionisio.Domain\bin\Debug\net6.0\Dionisio.Domain.runtimeconfig.json
+C:\Users\tiago\Desktop\Projeto Pdf\Dionisio\Dionisio.Domain\bin\Debug\net6.0\Dionisio.Domain.dll
+C:\Users\tiago\Desktop\Projeto Pdf\Dionisio\Dionisio.Domain\bin\Debug\net6.0\Dionisio.Domain.pdb
+C:\Users\tiago\Desktop\Projeto Pdf\Dionisio\Dionisio.Domain\obj\Debug\net6.0\Dionisio.Domain.csproj.AssemblyReference.cache
+C:\Users\tiago\Desktop\Projeto Pdf\Dionisio\Dionisio.Domain\obj\Debug\net6.0\Dionisio.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tiago\Desktop\Projeto Pdf\Dionisio\Dionisio.Domain\obj\Debug\net6.0\Dionisio.Domain.AssemblyInfoInputs.cache
+C:\Users\tiago\Desktop\Projeto Pdf\Dionisio\Dionisio.Domain\obj\Debug\net6.0\Dionisio.Domain.AssemblyInfo.cs
+C:\Users\tiago\Desktop\Projeto Pdf\Dionisio\Dionisio.Domain\obj\Debug\net6.0\Dionisio.Domain.csproj.CoreCompileInputs.cache
+C:\Users\tiago\Desktop\Projeto Pdf\Dionisio\Dionisio.Domain\obj\Debug\net6.0\Dionisio.Domain.dll
+C:\Users\tiago\Desktop\Projeto Pdf\Dionisio\Dionisio.Domain\obj\Debug\net6.0\refint\Dionisio.Domain.dll
+C:\Users\tiago\Desktop\Projeto Pdf\Dionisio\Dionisio.Domain\obj\Debug\net6.0\Dionisio.Domain.pdb
+C:\Users\tiago\Desktop\Projeto Pdf\Dionisio\Dionisio.Domain\obj\Debug\net6.0\Dionisio.Domain.genruntimeconfig.cache
+C:\Users\tiago\Desktop\Projeto Pdf\Dionisio\Dionisio.Domain\obj\Debug\net6.0\ref\Dionisio.Domain.dll

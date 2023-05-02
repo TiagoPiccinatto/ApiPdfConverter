@@ -1,0 +1,26 @@
+#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+WORKDIR /app
+EXPOSE 80
+EXPOSE 443
+
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+WORKDIR /src
+COPY ["Dionisio/Dionisio.csproj", "Dionisio/"]
+COPY ["Dionisio.Application/Dionisio.Application.csproj", "Dionisio.Application/"]
+COPY ["Dionisio.Domain/Dionisio.Domain.csproj", "Dionisio.Domain/"]
+COPY ["Dionisio.Data/Dionisio.Data.csproj", "Dionisio.Data/"]
+COPY ["Dionisio.Infra/Dionisio.Infra.csproj", "Dionisio.Infra/"]
+RUN dotnet restore "Dionisio/Dionisio.csproj"
+COPY . .
+WORKDIR "/src/Dionisio"
+RUN dotnet build "Dionisio.csproj" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish "Dionisio.csproj" -c Release -o /app/publish /p:UseAppHost=false
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "Dionisio.dll"]
