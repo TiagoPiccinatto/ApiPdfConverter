@@ -1,21 +1,21 @@
-﻿using Dionisio.Domain.Entities.Base;
+﻿using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dionisio.Domain.Entities
+namespace Dionisio.Domain.Models
 {
-    public class PdfEntity : BaseEntity
+    public class LawModel
     {
+        public Guid Id { get; set; }
         public string NumeroLei { get; set; }
         public string Data { get; set; }
         public string Descricao { get; set; }
         public string Autor { get; set; }
         public string Vigencia { get; set; }
-        public string PdfFile { get; set; }
-        public string FileHtml { get; set; }
+        public IFormFile PdfFile { get; set; }
+        public IFormFile? FileHtml { get; set; }
     }
 }

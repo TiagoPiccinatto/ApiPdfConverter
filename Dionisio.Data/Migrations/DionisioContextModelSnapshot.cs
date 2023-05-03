@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Dionisio.Data.Migrations
 {
-    [DbContext(typeof(PdfContext))]
-    partial class PdfContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(DionisioContext))]
+    partial class DionisioContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -22,7 +22,7 @@ namespace Dionisio.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Dionisio.Domain.Entities.PdfEntity", b =>
+            modelBuilder.Entity("Dionisio.Domain.Entities.LawEntity", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -58,7 +58,7 @@ namespace Dionisio.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pdf");
+                    b.ToTable("Law");
                 });
 #pragma warning restore 612, 618
         }

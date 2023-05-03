@@ -5,9 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dionisio.Application.Interface.Sevice
+namespace Dionisio.Application.Interface.Repository
 {
-    public interface IPdfService : IBaseService<PdfEntity>
+    public interface ILawRepository : IBaseRepository<LawEntity>
     {
+
     }
 }

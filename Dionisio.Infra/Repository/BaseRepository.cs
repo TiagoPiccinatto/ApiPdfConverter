@@ -12,8 +12,8 @@ namespace Dionisio.Infra.Repository
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
     {
-        protected PdfContext _context;
-        public BaseRepository(PdfContext context)
+        protected DionisioContext _context;
+        public BaseRepository(DionisioContext context)
         {
             _context = context;
         }

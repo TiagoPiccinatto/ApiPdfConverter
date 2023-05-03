@@ -33,7 +33,7 @@ namespace Dionisio.Configuration
                                   });
             });
 
-            services.AddDbContext<PdfContext>(options =>
+            services.AddDbContext<DionisioContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
         }
 

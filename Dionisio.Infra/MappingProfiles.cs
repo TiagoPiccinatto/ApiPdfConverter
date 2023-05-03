@@ -13,7 +13,7 @@ namespace Dionisio.Infra
     {
         public MappingProfiles()
         {
-            CreateMap<PdfEntity, PdfModel>().ReverseMap();
+            CreateMap<LawEntity, LawModel>().ReverseMap();
            
         }
     }

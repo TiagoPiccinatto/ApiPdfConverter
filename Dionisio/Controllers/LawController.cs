@@ -13,32 +13,32 @@ namespace Dionisio.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class PdfToHtmlController : ControllerBase
+    public class LawController : ControllerBase
     {
-        private readonly IPdfService _PdfService;
+        private readonly ILawService _LawService;
 
-        public PdfToHtmlController(IPdfService PdfService)
+        public LawController(ILawService LawService)
         {
-            _PdfService = PdfService;
+            _LawService = LawService;
         }
 
         [HttpGet("get")]
         public async Task<IActionResult> Get()
         {
-            var res = await _PdfService.Get();
+            var res = await _LawService.Get();
             return Ok(res);
         }
 
         [HttpGet("get/{id}")]
-        public ActionResult<PdfEntity> GetPdfbyId(Guid id)
+        public ActionResult<LawEntity> GetLawbyId(Guid id)
         {
-            var Pdf = _PdfService.GetById(id);
+            var Pdf = _LawService.GetById(id);
 
             if (Pdf == null)
             {
                 return BadRequest(new
                 {
-                    msg = "Não foi possível encontrar o Pdf!"
+                    msg = "Não foi possível encontrar a Lei!"
                 });
             }
 
@@ -59,7 +59,7 @@ namespace Dionisio.Controllers
             {
                 return BadRequest(new
                 {
-                    msg = "Não foi possível encontrar o Pdf!"
+                    msg = "Não foi possível encontrar o arquivo Html!"
                 });
             }
 
@@ -85,7 +85,7 @@ namespace Dionisio.Controllers
         }
 
         [HttpPost("add")]
-        public async Task<ActionResult> AddPdf([FromForm] PdfModel Pdf)
+        public async Task<ActionResult> AddLaw([FromForm] LawModel Pdf)
         {           
             string FilePathPdf = Path.Combine("Storage", Guid.NewGuid().ToString() + Pdf.PdfFile.FileName);
             string FilePathHtml = Path.Combine("Storage/ArquivosHtml", Guid.NewGuid().ToString() + ".html");
@@ -98,7 +98,7 @@ namespace Dionisio.Controllers
             using StreamWriter HtmlWriter = new(FilePathHtml);
             HtmlWriter.Write(htmlFile);
 
-            PdfEntity pdfEntity = new()
+            LawEntity pdfEntity = new()
             {
                 Autor = Pdf.Autor,
                 Data = Pdf.Data,
@@ -108,13 +108,13 @@ namespace Dionisio.Controllers
                 FileHtml = FilePathHtml
             };
 
-            var PdfCriado = await _PdfService.Add(pdfEntity);
+            var PdfCriado = await _LawService.Add(pdfEntity);
 
             if (PdfCriado == null)
             {
                 return BadRequest(new
                 {
-                    msg = "Não foi possível criar o Pdf!"
+                    msg = "Não foi possível criar a Lei!"
                 });
             }
 
@@ -122,15 +122,15 @@ namespace Dionisio.Controllers
         }
 
         [HttpPut("update")]
-        public async Task<ActionResult> UpdatePdf(PdfEntity PdfAtualizado)
+        public async Task<ActionResult> UpdateLaw(LawEntity PdfAtualizado)
         {
-            var PdfCriado = await _PdfService.Update(PdfAtualizado);
+            var PdfCriado = await _LawService.Update(PdfAtualizado);
 
             if (PdfCriado == null)
             {
                 return BadRequest(new
                 {
-                    msg = "Não foi possível editar o Pdf!"
+                    msg = "Não foi possível editar o Lei!"
                 });
             }
 
@@ -138,15 +138,15 @@ namespace Dionisio.Controllers
         }
 
         [HttpDelete]
-        public async Task<ActionResult> DeletePdf(Guid id)
+        public async Task<ActionResult> DeleteLaw(Guid id)
         {
-            var PdfDeletado = await _PdfService.Delete(id);
+            var PdfDeletado = await _LawService.Delete(id);
 
             if (!PdfDeletado)
             {
                 return BadRequest(new
                 {
-                    msg = "Não foi possível excluir o Pdf!"
+                    msg = "Não foi possível excluir a Lei!"
                 });
             }
 
@@ -154,11 +154,5 @@ namespace Dionisio.Controllers
         }
 
 
-        [HttpPost]
-        public string PdfToHtml(IFormFile file)
-        {
-
-            return new PdfConvertService().PdfToHtml(file);
-        }
     }
 }

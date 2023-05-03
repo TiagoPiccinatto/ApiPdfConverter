@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace Dionisio.Application.Service
 {
-    public class PdfService : BaseService<PdfEntity>, IPdfService
+    public class LawService : BaseService<LawEntity>, ILawService
     {
-        private readonly IPdfRepository _PdfRepository;
-        public PdfService(IBaseRepository<PdfEntity> baseRepository, IMapper mapper, IPdfRepository PdfRepository) : base(baseRepository, mapper)
+        private readonly ILawRepository _PdfRepository;
+        public LawService(IBaseRepository<LawEntity> baseRepository, IMapper mapper, ILawRepository PdfRepository) : base(baseRepository, mapper)
         {
             _PdfRepository = PdfRepository;
         }

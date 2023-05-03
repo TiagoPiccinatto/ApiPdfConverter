@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Dionisio.Data.Migrations
 {
-    [DbContext(typeof(PdfContext))]
-    [Migration("20230503125530_FirstMigration")]
+    [DbContext(typeof(DionisioContext))]
+    [Migration("20230503130759_FirstMigration")]
     partial class FirstMigration
     {
         /// <inheritdoc />
@@ -25,7 +25,7 @@ namespace Dionisio.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Dionisio.Domain.Entities.PdfEntity", b =>
+            modelBuilder.Entity("Dionisio.Domain.Entities.LawEntity", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -61,7 +61,7 @@ namespace Dionisio.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pdf");
+                    b.ToTable("Law");
                 });
 #pragma warning restore 612, 618
         }

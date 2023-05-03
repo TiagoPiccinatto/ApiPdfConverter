@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace Dionisio.Data.Context
 {
-    public class PdfContext : DbContext
+    public class DionisioContext : DbContext
     {
-        public PdfContext(DbContextOptions<PdfContext> options) : base(options)
+        public DionisioContext(DbContextOptions<DionisioContext> options) : base(options)
         {
 
         }
-        public DbSet<PdfEntity> Pdf => Set<PdfEntity>();
+        public DbSet<LawEntity> Law => Set<LawEntity>();
 
     }
 }

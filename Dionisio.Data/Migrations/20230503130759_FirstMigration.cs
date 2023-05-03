@@ -12,7 +12,7 @@ namespace Dionisio.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Pdf",
+                name: "Law",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -26,7 +26,7 @@ namespace Dionisio.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Pdf", x => x.Id);
+                    table.PrimaryKey("PK_Law", x => x.Id);
                 });
         }
 
@@ -34,7 +34,7 @@ namespace Dionisio.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Pdf");
+                name: "Law");
         }
     }
 }

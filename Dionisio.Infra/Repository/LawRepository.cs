@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Dionisio.Infra.Repository
 {
-    public class PdfRepository : BaseRepository<PdfEntity>, IPdfRepository
+    public class LawRepository : BaseRepository<LawEntity>, ILawRepository
     {
-        public PdfRepository(PdfContext context) : base(context)
+        public LawRepository(DionisioContext context) : base(context)
         {
         }
     }
