@@ -44,6 +44,10 @@ namespace Dionisio.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("NumeroLei")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("PdfFile")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

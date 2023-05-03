@@ -5,6 +5,9 @@ using Dionisio.Domain.Models;
 using Dionisio.PdfConverter;
 using Microsoft.AspNetCore.Mvc;
 using Org.BouncyCastle.Asn1;
+using System.Net;
+using System.Net.Http.Headers;
+using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace Dionisio.Controllers
 {
@@ -62,11 +65,30 @@ namespace Dionisio.Controllers
 
             return Ok(teste);
         }
+
+        [HttpGet("download-pdf")]
+        public async Task<IActionResult> DownloadPdf(string filePath)
+        {
+            string nome = filePath.Substring(filePath.LastIndexOf('/') + 1);
+
+            if (!System.IO.File.Exists(filePath))
+            {
+                return NotFound();
+            }
+
+            byte[] fileBytes = await System.IO.File.ReadAllBytesAsync(filePath);
+
+            var content = new ByteArrayContent(fileBytes);
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/pdf");
+
+            return File(fileBytes, "application/pdf", $"{nome.Substring(36)}.pdf");
+        }
+
         [HttpPost("add")]
         public async Task<ActionResult> AddPdf([FromForm] PdfModel Pdf)
         {           
             string FilePathPdf = Path.Combine("Storage", Guid.NewGuid().ToString() + Pdf.PdfFile.FileName);
-            string FilePathHtml = Path.Combine("Storage/ArquivosHtml", Guid.NewGuid().ToString() + Pdf.PdfFile.FileName.Replace(".pdf", ".html"));
+            string FilePathHtml = Path.Combine("Storage/ArquivosHtml", Guid.NewGuid().ToString() + ".html");
 
             using Stream fileStreamPdf = new FileStream(FilePathPdf, FileMode.Create);
             Pdf.PdfFile.CopyTo(fileStreamPdf);

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Dionisio.Data.Migrations
 {
     [DbContext(typeof(PdfContext))]
-    [Migration("20230501225321_FirstMigration")]
+    [Migration("20230503125530_FirstMigration")]
     partial class FirstMigration
     {
         /// <inheritdoc />
@@ -44,6 +44,10 @@ namespace Dionisio.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FileHtml")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NumeroLei")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

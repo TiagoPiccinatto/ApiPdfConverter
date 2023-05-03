@@ -10,6 +10,7 @@ namespace Dionisio.Domain.Entities
 {
     public class PdfEntity : BaseEntity
     {
+        public string NumeroLei { get; set; }
         public string Data { get; set; }
         public string Descricao { get; set; }
         public string Autor { get; set; }

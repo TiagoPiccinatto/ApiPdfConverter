@@ -10,6 +10,7 @@ namespace Dionisio.Domain.Models
     public class PdfModel
     {
         public Guid Id { get; set; }
+        public string NumeroLei { get; set; }
         public string Data { get; set; }
         public string Descricao { get; set; }
         public string Autor { get; set; }
