@@ -101,6 +101,7 @@ namespace Dionisio.Controllers
             LawEntity pdfEntity = new()
             {
                 Autor = Pdf.Autor,
+                NumeroLei = Pdf.NumeroLei,
                 Data = Pdf.Data,
                 Descricao = Pdf.Descricao,
                 Vigencia = Pdf.Vigencia,
