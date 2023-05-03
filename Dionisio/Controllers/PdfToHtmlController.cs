@@ -41,6 +41,27 @@ namespace Dionisio.Controllers
 
             return Ok(Pdf);
         }
+
+        [HttpGet("getHtml/{id}")]
+        public ActionResult<string> GetHtmlbyId(Guid id)
+        {
+            string FilePathHtml = Path.Combine("Storage/ArquivosHtml", id + ".html");
+
+            //using StreamReader HtmlWriter = new(FilePathHtml);
+            using var html = new StreamReader(FilePathHtml);
+            var teste = html.ReadToEnd();
+            //var html = File.ReadAllText(FilePathHtml);
+
+            if (FilePathHtml == null)
+            {
+                return BadRequest(new
+                {
+                    msg = "Não foi possível encontrar o Pdf!"
+                });
+            }
+
+            return Ok(teste);
+        }
         [HttpPost("add")]
         public async Task<ActionResult> AddPdf([FromForm] PdfModel Pdf)
         {           

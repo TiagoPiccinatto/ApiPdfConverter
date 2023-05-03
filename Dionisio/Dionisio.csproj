@@ -31,8 +31,4 @@
     <ProjectReference Include="..\Dionisio.PdfConverter\Dionisio.PdfConverter.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Storage\ArquivosHtml\" />
-  </ItemGroup>
-
 </Project>

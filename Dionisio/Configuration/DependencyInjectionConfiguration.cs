@@ -22,6 +22,17 @@ namespace Dionisio.Configuration
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: "MyAllowSpecificOrigins",
+                                  policy =>
+                                  {
+                                      policy.WithOrigins("http://127.0.0.1:5173")
+                                                        .AllowAnyHeader()
+                                                        .AllowAnyMethod();
+                                  });
+            });
+
             services.AddDbContext<PdfContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
         }
@@ -35,6 +46,8 @@ namespace Dionisio.Configuration
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors("MyAllowSpecificOrigins");
 
             app.UseAuthorization();
 
