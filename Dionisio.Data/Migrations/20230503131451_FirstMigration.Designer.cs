@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Dionisio.Data.Migrations
 {
     [DbContext(typeof(DionisioContext))]
-    [Migration("20230503130759_FirstMigration")]
+    [Migration("20230503131451_FirstMigration")]
     partial class FirstMigration
     {
         /// <inheritdoc />
